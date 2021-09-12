@@ -1,9 +1,55 @@
+//dependencies
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+//internal imports
+const User = require('./../models/User');
+
 const userSignUp = async function (req, res, next) {
-   //TODO: Impliment user signup functionalities
+   const hashedPassword = await bcrypt.hash(req.body.password, 10);
+   try {
+      const newUser = new User({
+         ...req.body,
+         password: hashedPassword,
+      });
+      await newUser.save();
+      res.status(200).json({ status: 'success', message: 'User signed up successfully' });
+   } catch (error) {
+      next(error);
+   }
 };
 
 const userSignIn = async function (req, res, next) {
-   //TODO: Impliment user sign in functionalities
+   try {
+      const user = await User.findOne({
+         $or: [{ $email: req.body.email }, { mobile: req.body.mobile }],
+      });
+
+      if (user && user._id) {
+         const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+         if (isValidPassword) {
+            const userObjectJwt = {
+               id: user._id,
+               email: user.email,
+               mobile: user.mobile,
+            };
+            const token = jwt.sign(userObjectJwt, process.env.JWT_SECRET_KEY, {
+               expiresIn: process.env.JWT_EXPIRY,
+            });
+            res.cookie(process.env.COOKIE_NAME, token, {
+               maxAge: process.env.JWT_EXPIRY,
+               httpOnly: true,
+               signed: true,
+            });
+            res.status(200).json({ status: 'success', message: 'User signed in successfully' });
+         } else {
+            next(new Error('Authentication Error 1'));
+         }
+      } else {
+         next(new Error('Authentication Error 2'));
+      }
+   } catch (error) {
+      next(error);
+   }
 };
 
 module.exports = { userSignUp, userSignIn };
