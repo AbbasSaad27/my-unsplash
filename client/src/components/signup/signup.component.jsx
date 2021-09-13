@@ -23,7 +23,7 @@ class SignUp extends React.Component {
     alert("submitted");
     const data = { ...this.state };
     axios
-      .post("http:/localhost:5000/api/user/signup/", data)
+      .post("http://localhost:5000/api/user/signup/", data)
       .then((response) => console.log(response))
       .catch((err) => console.error(err));
   };
