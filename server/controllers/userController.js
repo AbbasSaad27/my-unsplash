@@ -52,4 +52,13 @@ const userSignIn = async function (req, res, next) {
    }
 };
 
-module.exports = { userSignUp, userSignIn };
+const getUser = async function (req, res, next) {
+   try {
+      const user = await User.findById({ _id: req.user.id }).populate('images').select({ password: 0 });
+      res.status(200).json({ status: 'success', message: 'successfully fetched user data', data: user });
+   } catch (error) {
+      next(new Error('Failed to get user'));
+   }
+};
+
+module.exports = { userSignUp, userSignIn, getUser };

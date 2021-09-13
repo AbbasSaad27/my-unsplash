@@ -1,0 +1,7 @@
+sign in = POST http://localhost:5000/api/user/signin/
+sign up = POST http://localhost:5000/api/user/signup/
+
+get user data = GET http://localhost:5000/api/user/
+
+add image = POST http://localhost:5000/api/image/
+delete image = DELETE http://localhost:5000/api/image/
