@@ -5,9 +5,9 @@ import { useTransition, animated } from "react-spring";
 import Home from "./components/home/home.component";
 
 function App() {
-  const [showHome, setShowHome] = useState(false);
+  const [loggedStatus, setLoggedStatus] = useState(true);
 
-  const transition = useTransition(showHome, {
+  const transition = useTransition(loggedStatus, {
     from: { tranform: "scale(0)", borderRadius: "50%" },
     enter: { transform: "scale(1)", borderRadius: "0%" },
     leave: { tranform: "scale(0)", borderRadius: "50%" },
