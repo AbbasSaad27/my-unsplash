@@ -3,15 +3,16 @@ const express = require('express');
 const multer = require('multer');
 
 //internal imports
-const { userSignUp, userSignIn } = require('../controllers/userController');
+const { addImage } = require('../controllers/imageController');
+const checkLogin = require('../middlewares/user/checkLogin');
 
 //init multer middlewares for text fields
 const upload = multer();
 
+//init router
 const router = express.Router();
 
-//user signup signin routes
-router.post('/signup', upload.none(), userSignUp);
-router.post('/signin', upload.none(), userSignIn);
+//add image
+router.post('/', checkLogin, upload.none(), addImage);
 
 module.exports = router;

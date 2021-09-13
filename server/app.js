@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 //internal imports
 const { notFoundHandler, defaultErrorHandler } = require('./middlewares/common/errorHandlers');
 const userRouter = require('./routers/userRouter');
+const imageRouter = require('./routers/imageRouter');
 
 //intitialise the app
 const app = express();
@@ -32,7 +33,7 @@ mongoose
 
 //routes
 app.use('/api/user', userRouter);
-//app.use('/api/image', imageHandler); //TODO: neeed to create image handler
+app.use('/api/image', imageRouter);
 //app.use('/api/category', categoryHandler); //TODO: neeed to create category handler
 
 //404 not found handler
