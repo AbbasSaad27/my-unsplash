@@ -8,6 +8,12 @@ const userSchema = mongoose.Schema(
       email: { type: String, required: true, unique: true, lowercase: true },
       mobile: { type: String, required: true, unique: true },
       password: { type: String, required: true },
+      images: [
+         {
+            type: mongoose.Types.ObjectId,
+            ref: 'Image',
+         },
+      ],
    },
    { timestamps: true }
 );
