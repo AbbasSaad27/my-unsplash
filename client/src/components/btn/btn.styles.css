@@ -14,6 +14,7 @@
   padding: 1rem 2rem;
   border: 1px solid rgb(158, 158, 158);
   border-radius: 1rem;
+  font-weight: 700;
 }
 .form-btn:focus,
 .form-btn:hover {

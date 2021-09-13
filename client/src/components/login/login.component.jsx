@@ -25,7 +25,6 @@ class LogIn extends React.Component {
       );
       console.log(response);
       this.setState({ email: "", password: "" });
-      alert("submitted");
     } catch (err) {
       console.error(err);
     }
