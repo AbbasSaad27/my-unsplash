@@ -1,10 +1,15 @@
 import React from "react";
 import "./form-input.styles.css";
 
-const FormInput = ({ children, ...props }) => {
+const FormInput = ({ children, className, ...props }) => {
   return (
     <div className="form-input">
-      <input {...props} />
+      <input
+        {...props}
+        className={`${className} ${
+          props.value.length > 0 ? "input-invalid" : ""
+        }`}
+      />
       {children ? (
         <label
           className={`input-label ${props.value.length > 0 ? "shrink" : ""}`}

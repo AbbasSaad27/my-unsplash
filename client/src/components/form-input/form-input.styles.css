@@ -3,11 +3,9 @@
 }
 .input {
   border: none;
-  border-bottom: 1px solid rgb(145, 145, 145);
+  border-bottom: 1px solid #bdbdbd;
   padding: 0.5rem 0.5rem 1rem 0.5rem;
   transition: all 0.3s;
-}
-.form-input {
   margin-bottom: 3rem;
 }
 .input {
@@ -21,7 +19,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  color: rgb(158, 158, 158);
+  color: #bdbdbd;
   transition: all 0.3s;
 }
 .shrink {
@@ -31,4 +29,7 @@
 .input:focus ~ .input-label {
   top: -1.5rem;
   font-size: 1.3rem;
+}
+.input-invalid:invalid {
+  border-bottom: 1px solid rgb(235, 88, 88);
 }
