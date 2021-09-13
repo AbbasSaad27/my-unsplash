@@ -17,15 +17,25 @@ class SignUp extends React.Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-
-    alert("submitted");
     const data = { ...this.state };
-    axios
-      .post("http://localhost:5000/api/user/signup/", data)
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/signup/",
+        data
+      );
+      console.log(response);
+      this.setState({
+        name: "",
+        email: "",
+        mobile: "",
+        password: "",
+        confirm_password: "",
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   handleChange = (e) => {
@@ -34,7 +44,7 @@ class SignUp extends React.Component {
     this.setState({ [name]: value });
   };
 
-  handleClick = (e) => {
+  handleClick = () => {
     this.props.setloginForm(true);
   };
 

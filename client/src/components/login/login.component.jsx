@@ -14,14 +14,21 @@ class LogIn extends React.Component {
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    alert("submitted");
     const data = { ...this.state };
-    axios
-      .post("http://localhost:5000/api/user/signin/", data)
-      .then((response) => console.log(response))
-      .catch((err) => console.error(err));
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/signin/",
+        data,
+        { withCredentials: true }
+      );
+      console.log(response);
+      this.setState({ email: "", password: "" });
+      alert("submitted");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   handleChange = (e) => {
