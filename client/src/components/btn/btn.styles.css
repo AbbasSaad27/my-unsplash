@@ -1,0 +1,25 @@
+.btn {
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+.btn:focus {
+  outline: none;
+}
+.form-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 1rem;
+}
+.form-btn:focus,
+.form-btn:hover {
+  border: 1px solid #3db46d;
+}
+.form-btn:active {
+  color: white;
+  background-color: #3db46d;
+}

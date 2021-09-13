@@ -1,0 +1,40 @@
+.form-header {
+  padding-left: 3rem;
+  margin-bottom: 2rem;
+  position: relative;
+  border-left: 3px solid #3db46d;
+  color: #3db46d;
+}
+.login-form {
+  width: 30rem;
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 0 2rem 0;
+  border-radius: 1rem;
+  z-index: 1;
+}
+.form {
+  padding: 1rem 3.3rem;
+  font-size: 1.6rem;
+}
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+.icon-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1rem;
+  right: -3rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  color: white;
+  background-color: #3db46d;
+  text-align: center;
+  cursor: pointer;
+}
