@@ -19,7 +19,6 @@ const userSignUp = async function (req, res, next) {
 };
 
 const userSignIn = async function (req, res, next) {
-   console.log('incoming request');
    try {
       const user = await User.findOne({
          $or: [{ $email: req.body.email }, { mobile: req.body.mobile }],
