@@ -2,10 +2,12 @@
    "name": "my-unsplash-server",
    "version": "1.0.0",
    "description": "",
+   "engines": {
+      "node": "16.0.0"
+   },
    "main": "app.js",
    "scripts": {
-      "start": "NODE_ENV=development nodemon app.js",
-      "production": "NODE_ENV=production node app.js"
+      "start": "NODE_ENV=development nodemon app.js"
    },
    "author": "",
    "license": "ISC",

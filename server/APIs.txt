@@ -1,7 +1,7 @@
-sign in = POST http://localhost:5000/api/user/signin/
-sign up = POST http://localhost:5000/api/user/signup/
+sign in = POST https://myunsplashapi.herokuapp.com/api/user/signin/
+sign up = POST https://myunsplashapi.herokuapp.com/api/user/signup/
 
-get user data = GET http://localhost:5000/api/user/
+get user data = GET https://myunsplashapi.herokuapp.com/api/user/
 
-add image = POST http://localhost:5000/api/image/
-delete image = DELETE http://localhost:5000/api/image/
+add image = POST https://myunsplashapi.herokuapp.com/api/image/
+delete image = DELETE https://myunsplashapi.herokuapp.com/api/image/
