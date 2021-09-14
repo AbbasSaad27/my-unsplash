@@ -1,9 +1,9 @@
-import React from "react";
-import "./login.styles.css";
-import FormInput from "../form-input/form-input.component";
-import Button from "../btn/btn.component";
-import { ReactComponent as SignupIcon } from "../../icons/signup-icon.svg";
 import axios from "axios";
+import React from "react";
+import { ReactComponent as SignupIcon } from "../../icons/signup-icon.svg";
+import Button from "../btn/btn.component";
+import FormInput from "../form-input/form-input.component";
+import "./login.styles.css";
 
 class LogIn extends React.Component {
   constructor(props) {

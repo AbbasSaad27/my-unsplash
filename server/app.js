@@ -22,7 +22,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(
+   cors({
+      origin: 'http://localhost:3000',
+      credentials: true,
+      optionSuccessStatus: 200,
+   })
+);
 app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
 
 //database connection
