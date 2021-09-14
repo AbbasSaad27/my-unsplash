@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../btn/btn.component";
 import FormInput from "../form-input/form-input.component";
+import { ReactComponent as SearchIcon } from "../../icons/search-icon.svg";
 import "./header.styles.css";
 
 const Header = () => {
@@ -22,6 +23,9 @@ const Header = () => {
           <p className="welcome-message">Welcome, User</p>
         </div>
         <div className="search-container">
+          <div className="search-icon-container">
+            <SearchIcon />
+          </div>
           <FormInput
             type="text"
             name="searchTxt"

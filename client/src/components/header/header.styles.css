@@ -29,8 +29,33 @@
 .welcome-message {
   margin-right: 3rem;
 }
-.input-search {
-  padding: 1rem 0.5rem;
+.search-container {
+  position: relative;
   border-radius: 1rem;
   border: 1px solid #bdbdbd;
+  overflow: hidden;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+.input-search {
+  padding: 1rem 0.5rem;
+  margin-left: 4rem;
+  border: none;
+}
+.search-icon-container {
+  position: absolute;
+  color: #bdbdbd;
+  padding: 0.4rem 1rem;
+}
+.search-icon-container .icon {
+  width: 1.7rem;
+  width: 1.7rem;
+}
+.btn-add {
+  color: white;
+  padding: 0.5rem 2rem;
+  background-color: #3db46d;
+  height: 5rem;
+  border-radius: 1rem;
+  box-shadow: 0px 3px 5px 1px #3db46d4d;
 }
