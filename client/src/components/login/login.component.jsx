@@ -19,11 +19,12 @@ class LogIn extends React.Component {
     const data = { ...this.state };
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/signin/",
+        "https://myunsplashapi.herokuapp.com/api/user/signin/",
         data,
         { withCredentials: true }
       );
       console.log(response);
+      this.props.setLoggedStatus(true);
       this.setState({ email: "", password: "" });
     } catch (err) {
       console.error(err);
@@ -53,7 +54,7 @@ class LogIn extends React.Component {
         </div>
         <form className="form" onSubmit={this.handleSubmit}>
           <FormInput
-            type="text"
+            type="email"
             name="email"
             id="email-login"
             className="input input-email"

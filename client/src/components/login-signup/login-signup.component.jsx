@@ -20,7 +20,11 @@ const LoginSignup = (props) => {
     <div className="login-signup-container">
       {transition((style, item) =>
         item ? (
-          <AnimatedLogIn style={style} setloginForm={setloginForm} />
+          <AnimatedLogIn
+            style={style}
+            setloginForm={setloginForm}
+            setLoggedStatus={props.setLoggedStatus}
+          />
         ) : (
           <AnimatedSignUp style={style} setloginForm={setloginForm} />
         )

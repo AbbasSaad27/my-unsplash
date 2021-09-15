@@ -19,13 +19,17 @@ class SignUp extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const data = { ...this.state };
+    const { confirm_password, ...data } = this.state;
+    if (this.state.password !== confirm_password) {
+      alert("Passwords don't match!");
+    }
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/user/signup/",
+        "https://myunsplashapi.herokuapp.com/api/user/signup/",
         data
       );
       console.log(response);
+      this.props.setloginForm(true);
       this.setState({
         name: "",
         email: "",
@@ -90,6 +94,7 @@ class SignUp extends React.Component {
             className="input input-tel"
             value={mobile}
             onChange={this.handleChange}
+            pattern="^(?:\+88|01)?\d{11}$"
           >
             Mobile
           </FormInput>
