@@ -57,5 +57,9 @@
   background-color: #3db46d;
   height: 5rem;
   border-radius: 1rem;
-  box-shadow: 0px 3px 5px 1px #3db46d4d;
+  box-shadow: 0px 3px 5px 1px #c1ebd24d, 1px 0px 5px 1px #3db46d71;
+  transition: all 0.3s;
+}
+.btn-add:hover {
+  opacity: 0.8;
 }

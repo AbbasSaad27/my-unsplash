@@ -4,7 +4,7 @@ import FormInput from "../form-input/form-input.component";
 import { ReactComponent as SearchIcon } from "../../icons/search-icon.svg";
 import "./header.styles.css";
 
-const Header = () => {
+const Header = ({ setOpenModal }) => {
   const [searchTxt, setSearchTxt] = useState("");
 
   const handleChange = (e) => {
@@ -36,7 +36,11 @@ const Header = () => {
           />
         </div>
       </div>
-      <Button type="button" classname="btn-add">
+      <Button
+        type="button"
+        classname="btn-add"
+        onClick={() => setOpenModal(true)}
+      >
         Add a photo
       </Button>
     </header>

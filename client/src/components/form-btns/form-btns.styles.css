@@ -1,0 +1,27 @@
+.btns-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-cancel {
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+  color: #bdbdbd;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  height: 4rem;
+}
+.btn-cancel:hover {
+  color: #535353;
+  border: 1px solid #3db46d;
+}
+.btn-submit {
+  padding: 1rem 2rem;
+  background-color: #3db46d;
+  border-radius: 1rem;
+  color: white;
+  box-shadow: 2px 1px 5px 0px rgb(186, 207, 184);
+  transition: all 0.3s;
+}
+.btn-submit:hover {
+  opacity: 0.8;
+}
