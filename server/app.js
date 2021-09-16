@@ -18,22 +18,19 @@ const app = express();
 dotev.config();
 
 //*default middlewares
+app.use((req, res, next) => {
+   console.log(req.header('Origin'));
+   next();
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 //setup cors
-const allowedOrigins = ['http://localhost:3000', 'https://myunsplashapi.herokuapp.com'];
+
 const corsOptions = {
-   origin: function (origin, callback) {
-      console.log(origin);
-      if (allowedOrigins.includes(origin)) {
-         callback(null, true);
-      } else {
-         callback(new Error('Not allowed by CORS'));
-      }
-   },
+   origin: ['http://localhost:3000', 'https://myunsplashapi.herokuapp.com'],
    credentials: true,
    optionSuccessStatus: 200,
 };
