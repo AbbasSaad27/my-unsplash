@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const corsOptions = {
    origin: 'https://6143633b897f7a200e0df51f--naughty-wilson-a271f9.netlify.app',
    credentials: true,
-   optionSuccessStatus: 200,
+   exposedHeaders: ['set-cookie'],
 };
 app.use(cors(corsOptions));
 
