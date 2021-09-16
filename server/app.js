@@ -18,23 +18,19 @@ const app = express();
 dotev.config();
 
 //*default middlewares
-app.use((req, res, next) => {
-   console.log(req.header('Origin'));
-   next();
-});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 //setup cors
-
 const corsOptions = {
    origin: 'http://localhost:3000',
    credentials: true,
    optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
+
 app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
 
 //database connection
