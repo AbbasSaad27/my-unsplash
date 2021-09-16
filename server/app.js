@@ -23,13 +23,21 @@ app.use(express.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(
-   cors({
-      origin: 'https://myunsplashapi.herokuapp.com',
-      credentials: true,
-      optionSuccessStatus: 200,
-   })
-);
+//setup cors
+const allowedOrigins = ['http://localhost:3000', 'https://myunsplashapi.herokuapp.com'];
+const corsOptions = {
+   origin: function (origin, callback) {
+      console.log(origin);
+      if (allowedOrigins.includes(origin)) {
+         callback(null, true);
+      } else {
+         callback(new Error('Not allowed by CORS'));
+      }
+   },
+   credentials: true,
+   optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
 
 //database connection
