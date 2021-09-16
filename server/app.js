@@ -25,11 +25,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //setup cors
 const corsOptions = {
-   origin: 'https://6143633b897f7a200e0df51f--naughty-wilson-a271f9.netlify.app',
+   origin: true,
    credentials: true,
    exposedHeaders: ['set-cookie'],
 };
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
 
