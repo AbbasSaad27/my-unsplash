@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //setup cors
 const corsOptions = {
    origin: true,
+   methods: 'GET,HEAD,OPTIONS,PATCH,POST,DELETE',
    credentials: true,
    exposedHeaders: ['set-cookie'],
 };
