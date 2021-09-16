@@ -20,9 +20,8 @@ const userSignUp = async function (req, res, next) {
 
 const userSignIn = async function (req, res, next) {
    try {
-      const user = await User.findOne({
-         $or: [{ $email: req.body.email }, { mobile: req.body.mobile }],
-      });
+      const user = await User.findOne({ email: req.body.email });
+      //console.log(user);
 
       if (user && user._id) {
          const isValidPassword = await bcrypt.compare(req.body.password, user.password);
@@ -37,7 +36,7 @@ const userSignIn = async function (req, res, next) {
             });
             res.cookie(process.env.COOKIE_NAME, token, {
                maxAge: process.env.JWT_EXPIRY,
-               httpOnly: true,
+               httpOnly: false,
                signed: true,
             });
             res.status(200).json({ status: 'success', message: 'User signed in successfully' });
