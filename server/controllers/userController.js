@@ -35,9 +35,8 @@ const userSignIn = async function (req, res, next) {
                expiresIn: process.env.JWT_EXPIRY,
             });
             res.cookie(process.env.COOKIE_NAME, token, {
-               domain: '.localhost:3000',
                maxAge: process.env.JWT_EXPIRY,
-               httpOnly: false,
+               httpOnly: true,
                signed: true,
             });
             res.status(200).json({ status: 'success', message: 'User signed in successfully' });

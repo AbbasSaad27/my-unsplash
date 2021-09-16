@@ -22,9 +22,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(
    cors({
-      origin: 'http://localhost:3000',
+      origin: 'https://myunsplashapi.herokuapp.com',
       credentials: true,
       optionSuccessStatus: 200,
    })
