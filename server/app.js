@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //setup cors
 const corsOptions = {
-   origin: 'http://localhost:3000',
+   origin: 'https://my-unsplash-virid.vercel.app',
    credentials: true,
    optionSuccessStatus: 200,
 };
