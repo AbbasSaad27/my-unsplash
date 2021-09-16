@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import useHandleChange from "../../custom-hooks/useHandleChange/useHandleChange";
 import { ReactComponent as SignupIcon } from "../../icons/signup-icon.svg";
