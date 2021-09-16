@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //setup cors
 
 const corsOptions = {
-   origin: ['http://localhost:3000', 'https://myunsplashapi.herokuapp.com'],
+   origin: 'http://localhost:3000',
    credentials: true,
    optionSuccessStatus: 200,
 };
