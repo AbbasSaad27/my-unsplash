@@ -26,7 +26,7 @@ class LogIn extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    let source = axios.CancelToken.source();
+    // let source = axios.CancelToken.source();
 
     this._isMounted && this.setState({ loader: true });
 
@@ -34,17 +34,30 @@ class LogIn extends React.Component {
     const data = JSON.stringify({ email, password });
 
     try {
-      const response = await axios.post(
+      // const response = await axios.post(
+      //   "https://myunsplashapi.herokuapp.com/api/user/signin/",
+      //   data,
+      //   {
+      //     headers: { "Content-type": "application/json" },
+      //     withCredentials: true,
+      //     cancelToken: source.token,
+      //   }
+      // );
+
+      const response = await fetch(
         "https://myunsplashapi.herokuapp.com/api/user/signin/",
-        data,
         {
-          headers: { "Content-type": "application/json" },
-          withCredentials: true,
-          cancelToken: source.token,
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+          },
+          credentials: "include",
+          body: data,
         }
       );
 
-      if (this.unmounted === true) source.cancel("canceling in cleanup");
+      // if (this.unmounted === true) source.cancel("canceling in cleanup");
 
       console.log(response);
       this._isMounted &&
@@ -52,7 +65,8 @@ class LogIn extends React.Component {
 
       this.props.setLoggedStatus(true);
     } catch (err) {
-      console.error(err.response.data);
+      this.setState({ loader: false });
+      console.error(err);
     }
   };
 
