@@ -1,0 +1,17 @@
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-box {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 1rem;
+  width: 30%;
+}

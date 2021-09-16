@@ -11,9 +11,9 @@
 .input {
   width: 100%;
 }
-.input:focus {
+input:focus {
   outline: none;
-  border-bottom: 1px solid #3db46d;
+  border-color: #3db46d;
 }
 .input-label {
   position: absolute;
@@ -31,5 +31,5 @@
   font-size: 1.3rem;
 }
 .input-invalid:invalid {
-  border-bottom: 1px solid rgb(235, 88, 88);
+  border-color: rgb(235, 88, 88);
 }
