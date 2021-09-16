@@ -57,6 +57,7 @@ class SignUp extends React.Component {
           loader: false,
         });
     } catch (err) {
+      this.setState({ loader: false });
       console.error(err);
     }
   };
