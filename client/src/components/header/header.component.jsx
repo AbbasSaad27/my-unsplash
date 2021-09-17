@@ -3,6 +3,9 @@ import Button from "../btn/btn.component";
 import FormInput from "../form-input/form-input.component";
 import { ReactComponent as SearchIcon } from "../../icons/search-icon.svg";
 import "./header.styles.css";
+import { connect } from "react-redux";
+import { openModal } from "../../redux/modal-reducer/modal-actions";
+import Logo from "../logo/logo.component";
 
 const Header = ({ setOpenModal }) => {
   const [searchTxt, setSearchTxt] = useState("");
@@ -14,10 +17,7 @@ const Header = ({ setOpenModal }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <div className="logo-container">
-          <div className="logo-dot"></div>
-          <div className="logo-surface"></div>
-        </div>
+        <Logo />
         <div className="app-title">
           <h3 className="title">My Unsplash</h3>
           <p className="welcome-message">Welcome, User</p>
@@ -47,4 +47,10 @@ const Header = ({ setOpenModal }) => {
   );
 };
 
-export default Header;
+const mapDispatchToProp = (dispatch) => {
+  return {
+    setOpenModal: (state) => dispatch(openModal(state)),
+  };
+};
+
+export default connect("", mapDispatchToProp)(Header);

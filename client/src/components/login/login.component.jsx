@@ -1,5 +1,10 @@
-import axios from "axios";
 import React from "react";
+
+import axios from "axios";
+import { connect } from "react-redux";
+import { animated } from "react-spring";
+
+import { setUser } from "../../redux/user-reducer/user-actions";
 import useHandleChange from "../../custom-hooks/useHandleChange/useHandleChange";
 import { ReactComponent as SignupIcon } from "../../icons/signup-icon.svg";
 import Button from "../btn/btn.component";
@@ -39,10 +44,11 @@ class LogIn extends React.Component {
         data,
         {
           headers: { "Content-type": "application/json" },
-          withCredentials: true,
           cancelToken: source.token,
+          withCredentials: true,
         }
       );
+      console.log(response);
 
       // const response = await fetch(
       //   "https://myunsplashapi.herokuapp.com/api/user/signin/",
@@ -57,16 +63,20 @@ class LogIn extends React.Component {
       //   }
       // );
 
+      // cleanup
       if (this.unmounted === true) source.cancel("canceling in cleanup");
-
-      console.log(response);
       this._isMounted &&
         this.setState({ email: "", password: "", loader: false });
 
-      this.props.setLoggedStatus(true);
+      // get user data
+      const userData = await axios.get(
+        "https://myunsplashapi.herokuapp.com/api/user/"
+      );
+      console.log(userData);
+      this.props.setUser(userData);
     } catch (err) {
       this.setState({ loader: false });
-      console.error(err);
+      console.error(err.response.data);
     }
   };
 
@@ -126,4 +136,11 @@ class LogIn extends React.Component {
     );
   }
 }
-export default LogIn;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (state) => dispatch(setUser(state)),
+  };
+};
+
+export default connect("", mapDispatchToProps)(animated(LogIn));
