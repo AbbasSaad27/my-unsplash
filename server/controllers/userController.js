@@ -62,4 +62,9 @@ const getUser = async function (req, res, next) {
    }
 };
 
-module.exports = { userSignUp, userSignIn, getUser };
+function userSignOut(req, res) {
+   res.clearCookie(process.env.COOKIE_NAME);
+   res.status(200).json({ status: 'success', message: 'User sucessfully signed out' });
+}
+
+module.exports = { userSignUp, userSignIn, getUser, userSignOut };

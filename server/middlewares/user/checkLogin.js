@@ -2,8 +2,6 @@
 const jwt = require('jsonwebtoken');
 
 const checkLogin = async function (req, res, next) {
-   console.log(req.signedCookies);
-
    const cookies = Object.keys(req.signedCookies).length > 0 ? req.signedCookies : null;
 
    if (cookies) {

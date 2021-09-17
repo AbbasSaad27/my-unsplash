@@ -16,6 +16,7 @@ const app = express();
 
 //initialise dot env
 dotev.config();
+console.log(app.app);
 
 //*default middlewares
 app.use(express.json());

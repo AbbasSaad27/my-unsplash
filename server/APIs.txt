@@ -1,5 +1,6 @@
 sign in = POST https://myunsplashapi.herokuapp.com/api/user/signin/
 sign up = POST https://myunsplashapi.herokuapp.com/api/user/signup/
+signout = DELETE https://myunsplashapi.herokuapp.com/api/user/signout/
 
 get user data = GET https://myunsplashapi.herokuapp.com/api/user/
 
