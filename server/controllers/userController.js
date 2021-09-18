@@ -35,12 +35,9 @@ const userSignIn = async function (req, res, next) {
                expiresIn: process.env.JWT_EXPIRY,
             });
             res.cookie(process.env.COOKIE_NAME, token, {
-               domain: '.my-unsplash-abbassaad27.vercel.app',
-               path: '/',
                maxAge: process.env.JWT_EXPIRY,
-               httpOnly: true,
-               secure: false,
-
+               httpOnly: false,
+               secure: true,
                sameSite: 'none',
                signed: true,
             });
