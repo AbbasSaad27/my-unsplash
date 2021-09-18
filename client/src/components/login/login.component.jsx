@@ -46,6 +46,7 @@ class LogIn extends React.Component {
           headers: { "Content-type": "application/json" },
           cancelToken: source.token,
           withCredentials: true,
+          credentials: "include",
         }
       );
       console.log(response);
