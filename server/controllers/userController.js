@@ -38,6 +38,7 @@ const userSignIn = async function (req, res, next) {
                maxAge: process.env.JWT_EXPIRY,
                httpOnly: true,
                secure: true,
+               sameSite: 'none',
                signed: true,
             });
             res.status(200).json({
