@@ -37,7 +37,7 @@ const userSignIn = async function (req, res, next) {
             res.cookie(process.env.COOKIE_NAME, token, {
                maxAge: process.env.JWT_EXPIRY,
                httpOnly: true,
-               //secure: false,
+               secure: true,
                sameSite: 'none',
             });
             res.status(200).json({
