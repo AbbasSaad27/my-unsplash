@@ -13,6 +13,9 @@ const router = express.Router();
 
 //user signup signin signout routes
 router.post('/signup', upload.none(), userSignUp);
+router.get('/cookie', (req, res, next) => {
+   console.log('GG');
+});
 router.post('/signin', upload.none(), userSignIn);
 router.delete('/signout', checkLogin, userSignOut);
 

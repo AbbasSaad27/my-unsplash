@@ -16,7 +16,7 @@ const app = express();
 
 //initialise dot env
 dotev.config();
-console.log(app.app);
+app.use(cookieParser());
 
 //*default middlewares
 app.use(express.json());
@@ -29,12 +29,9 @@ const corsOptions = {
    origin: true,
    methods: 'GET,HEAD,OPTIONS,PATCH,POST,DELETE',
    credentials: true,
-   exposedHeaders: ['set-cookie'],
+   //exposedHeaders: ['set-cookie'],
 };
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
-
-app.use(cookieParser(process.env.COOKIE_SECRET_KEY));
 
 //database connection
 mongoose
