@@ -38,10 +38,15 @@ const userSignIn = async function (req, res, next) {
                maxAge: process.env.JWT_EXPIRY,
                httpOnly: true,
                secure: true,
-               sameSite: 'none',
                signed: true,
             });
-            res.status(200).json({ status: 'success', message: 'User signed in successfully' });
+            res.status(200).json({
+               status: 'success',
+               message: 'User signed in successfully',
+               data: {
+                  token: token,
+               },
+            });
          } else {
             next(new Error('Authentication Error 1'));
          }
