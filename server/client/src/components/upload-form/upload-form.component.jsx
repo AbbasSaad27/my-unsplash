@@ -10,8 +10,8 @@ class UploadForm extends React.Component {
     super();
 
     this.state = {
-      photoName: "",
-      photoUrl: "",
+      title: "",
+      image_link: "",
     };
 
     this.handleChange = useHandleChange.bind(this);
@@ -26,14 +26,14 @@ class UploadForm extends React.Component {
         "https://myunsplashmern.herokuapp.com/api/image/",
         data
       );
-      console.log(response);
+      alert("Image uploaded successfully!");
     } catch (err) {
-      console.log(err.response.data);
+      alert(`${err.response.data.message} Please try again`);
     }
   };
 
   render() {
-    const { photoName, photoUrl } = this.state;
+    const { title, image_link } = this.state;
     return (
       <div className="form-container">
         <h2 className="modal-title">Add a new photo</h2>
@@ -41,20 +41,20 @@ class UploadForm extends React.Component {
           <p className="label">Label</p>
           <FormInput
             type="text"
-            name="photoName"
+            name="title"
             placeholder="Suspendisse elit massa"
             required
-            value={photoName}
+            value={title}
             onChange={this.handleChange}
             className="photo-name-input"
           />
           <p className="label">Photo URL</p>
           <FormInput
             type="url"
-            name="photoUrl"
+            name="image_link"
             placeholder="https://images.unsplash.com/photo-1584395630827-860eee694d7b?ixlib=r...
 "
-            value={photoUrl}
+            value={image_link}
             onChange={this.handleChange}
             className="photo-url-input"
             required
