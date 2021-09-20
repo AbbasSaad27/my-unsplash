@@ -22,7 +22,7 @@ function App({ user, setUser }) {
       }
     };
     fetchUserData();
-  }, []);
+  });
 
   const transition = useTransition(user, {
     from: { tranform: "scale(0)", borderRadius: "50%" },

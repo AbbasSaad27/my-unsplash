@@ -6,14 +6,11 @@ const multer = require('multer');
 const { addImage, deleteImage } = require('../controllers/imageController');
 const checkLogin = require('../middlewares/user/checkLogin');
 
-//init multer middlewares for text fields
-const upload = multer();
-
 //init router
 const router = express.Router();
 
 //add image
-router.post('/', checkLogin, upload.none(), addImage);
+router.post('/', checkLogin, addImage);
 router.delete('/', checkLogin, deleteImage);
 
 module.exports = router;
