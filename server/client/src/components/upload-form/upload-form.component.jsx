@@ -23,7 +23,7 @@ class UploadForm extends React.Component {
       const data = JSON.stringify({ ...this.state });
 
       const response = await axios.post(
-        "https://myunsplashapi.herokuapp.com/api/image/",
+        "https://myunsplashmern.herokuapp.com/api/image/",
         data
       );
       console.log(response);

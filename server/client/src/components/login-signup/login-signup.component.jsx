@@ -4,7 +4,7 @@ import LogIn from "../login/login.component";
 import SignUp from "../signup/signup.component";
 import { useTransition, animated } from "react-spring";
 
-const LoginSignup = (props) => {
+const LoginSignup = () => {
   const [loginForm, setloginForm] = useState(true);
 
   const transition = useTransition(loginForm, {

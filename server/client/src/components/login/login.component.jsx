@@ -40,7 +40,7 @@ class LogIn extends React.Component {
 
     try {
       const response = await axios.post(
-        "https://myunsplashapi.herokuapp.com/api/user/signin/",
+        "https://myunsplashmern.herokuapp.com/api/user/signin/",
         data,
         {
           headers: { "Content-type": "application/json" },
@@ -71,7 +71,7 @@ class LogIn extends React.Component {
 
       // get user data
       const userData = await axios.get(
-        "https://myunsplashapi.herokuapp.com/api/user/"
+        "https://myunsplashmern.herokuapp.com/api/user/"
       );
       console.log(userData);
       this.props.setUser(userData);

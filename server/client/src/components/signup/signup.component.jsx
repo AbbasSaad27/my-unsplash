@@ -39,7 +39,7 @@ class SignUp extends React.Component {
 
     try {
       const response = await axios.post(
-        "https://myunsplashapi.herokuapp.com/api/user/signup/",
+        "https://myunsplashmern.herokuapp.com/api/user/signup/",
         data
       );
 
