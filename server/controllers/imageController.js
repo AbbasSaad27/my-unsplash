@@ -4,7 +4,7 @@ const User = require('./../models/User');
 
 const addImage = async function (req, res, next) {
    try {
-      const data = JSON.parse(req.body);
+      const data = JSON.parse(JSON.stringify(req.body));
       console.log(data);
       const newImage = new Image({ ...data });
       const savedImage = await newImage.save();
