@@ -56,4 +56,4 @@ app.use(defaultErrorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`App is alive on localhost:${process.env.PORT}`));
+app.listen(PORT, () => console.log(`App is alive on localhost:${PORT}`));
