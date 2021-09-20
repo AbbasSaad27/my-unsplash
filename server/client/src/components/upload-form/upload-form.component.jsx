@@ -19,12 +19,18 @@ class UploadForm extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
+
+    let source = axios.CancelToken.source();
     try {
       const data = JSON.stringify({ ...this.state });
 
       const response = await axios.post(
         "https://myunsplashmern.herokuapp.com/api/image/",
-        data
+        data,
+        {
+          headers: { "Content-type": "application/json" },
+          cancelToken: source.token,
+        }
       );
       alert("Image uploaded successfully!");
     } catch (err) {
