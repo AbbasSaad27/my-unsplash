@@ -9,7 +9,7 @@ const addImage = async function (req, res, next) {
       await User.updateOne({ _id: req.user.id }, { $push: { images: savedImage._id } });
       res.status(200).json({ status: 'success', message: 'Image added successfully' });
    } catch (error) {
-      next(new Error('There was error while adding image'));
+      next(new Error(error));
    }
 };
 
