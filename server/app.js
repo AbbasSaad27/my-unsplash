@@ -50,4 +50,6 @@ app.all('*', notFoundHandler);
 //default error handler
 app.use(defaultErrorHandler);
 
-app.listen(process.env.PORT, () => console.log(`App is alive on localhost:${process.env.PORT}`));
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => console.log(`App is alive on localhost:${process.env.PORT}`));
