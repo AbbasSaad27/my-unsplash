@@ -13,7 +13,7 @@ function App({ user, setUser }) {
    useEffect(() => {
       const fetchUserData = async () => {
          try {
-            const response = await axios.get('https://myunsplashapi.herokuapp.com/api/user/');
+            const response = await axios.get('https://myunsplashmern.herokuapp.com/api/user/');
             console.log(response);
          } catch (err) {
             console.log(err.response.data);

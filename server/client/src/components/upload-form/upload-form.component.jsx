@@ -10,8 +10,8 @@ class UploadForm extends React.Component {
     super();
 
     this.state = {
-      photoName: "",
-      photoUrl: "",
+      title: "",
+      image_link: "",
     };
 
     this.handleChange = useHandleChange.bind(this);
