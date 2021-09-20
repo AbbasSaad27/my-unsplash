@@ -22,7 +22,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //set static folder
-app.use(express.static(path.join(__dirname, 'public')));
+if (process.env.NODE_ENV === 'production') {
+   app.use(express.static('client/build'));
+} else {
+   app.use(express.static(path.join(__dirname, 'public')));
+}
 
 //setup cors
 const corsOptions = {
