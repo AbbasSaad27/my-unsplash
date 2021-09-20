@@ -4,11 +4,10 @@ const User = require('./../models/User');
 
 const addImage = async function (req, res, next) {
    try {
-      console.log(req.body);
       const newImage = new Image({ ...req.body });
       const savedImage = await newImage.save();
       await User.updateOne({ _id: req.user.id }, { $push: { images: savedImage._id } });
-      res.status(200).json({ status: 'success', message: 'Image added successfully' });
+      res.status(200).json({ status: 'success', message: 'Image added successfully', data: { image: savedImage } });
    } catch (error) {
       next(new Error(error));
    }
