@@ -19,9 +19,9 @@ const deleteImage = async function (req, res, next) {
    try {
       const user = await User.findOne({ _id: req.user.id });
       if (user && user._id) {
-         const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+         const isValidPassword = await bcrypt.compare(req.body.userPassword, user.password);
          if (isValidPassword) {
-            const deletedImage = await Image.findByIdAndRemove({ _id: req.body.id });
+            const deletedImage = await Image.findByIdAndRemove({ _id: req.body.imageId });
             await User.updateOne(
                { _id: req.user.id },
                {
@@ -36,7 +36,7 @@ const deleteImage = async function (req, res, next) {
          next(new Error('User not found'));
       }
    } catch (error) {
-      next(new Error('There was error while deleteing the image'));
+      next(new Error(error));
    }
 };
 
