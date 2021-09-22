@@ -62,7 +62,6 @@ class LogIn extends React.Component {
       this.props.setUser(userData.data.data);
     } catch (err) {
       this.setState({ loader: false });
-      this.props.setUser({ name: "abbas", images: [] });
       alert(err.response.data.message);
     }
   };
