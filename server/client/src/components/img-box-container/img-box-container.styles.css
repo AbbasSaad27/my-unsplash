@@ -1,0 +1,14 @@
+.tip {
+  width: 100%;
+  height: calc(100vh - 12rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.img-box-container {
+  margin-top: 3rem;
+  position: relative;
+  columns: 3;
+  column-gap: 2rem;
+}

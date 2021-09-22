@@ -1,9 +1,14 @@
-import axios from "axios";
 import React from "react";
+import { connect } from "react-redux";
+
+import axios from "axios";
+
 import useHandleChange from "../../custom-hooks/useHandleChange/useHandleChange";
 import FormBtns from "../form-btns/form-btns.component";
 import FormInput from "../form-input/form-input.component";
 import "./upload-form.styles.css";
+import { addImage } from "../../redux/user-reducer/user-actions";
+import { selectImages } from "../../redux/user-reducer/user-selectors";
 
 class UploadForm extends React.Component {
   constructor() {
@@ -15,6 +20,11 @@ class UploadForm extends React.Component {
     };
 
     this.handleChange = useHandleChange.bind(this);
+    this._isMounted = false;
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
   }
 
   handleSubmit = async (e) => {
@@ -24,7 +34,7 @@ class UploadForm extends React.Component {
     try {
       const data = JSON.stringify({ ...this.state });
 
-      const response = await axios.post(
+      await axios.post(
         "https://myunsplashmern.herokuapp.com/api/image/",
         data,
         {
@@ -32,11 +42,24 @@ class UploadForm extends React.Component {
           cancelToken: source.token,
         }
       );
+
+      this.props.addImage({ ...this.state });
+
+      if (this.isMounted !== true) source.cancel("canceling in cleanup");
+      this._isMounted &&
+        this.setState({
+          title: "",
+          image_link: "",
+        });
       alert("Image uploaded successfully!");
     } catch (err) {
       alert(`${err.response.data.message} Please try again`);
     }
   };
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const { title, image_link } = this.state;
@@ -65,11 +88,23 @@ class UploadForm extends React.Component {
             className="photo-url-input"
             required
           />
-          <FormBtns />
+          <FormBtns btnTxt="Upload" />
         </form>
       </div>
     );
   }
 }
 
-export default UploadForm;
+const mapStateToProps = (state) => {
+  return {
+    images: selectImages(state),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addImage: (state) => dispatch(addImage(state)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UploadForm);

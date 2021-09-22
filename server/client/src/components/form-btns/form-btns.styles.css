@@ -25,3 +25,6 @@
 .btn-submit:hover {
   opacity: 0.8;
 }
+.delete {
+  background-color: tomato;
+}

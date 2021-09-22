@@ -2,12 +2,13 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(1px);
 }
 .modal-box {
   padding: 2rem;

@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { useTransition } from "react-spring";
 import "./App.css";
 import Home from "./components/home/home.component";
 import LoginSignup from "./components/login-signup/login-signup.component";
@@ -16,27 +15,15 @@ function App({ user, setUser }) {
         const response = await axios.get(
           "https://myunsplashmern.herokuapp.com/api/user/"
         );
-        console.log(response);
+        setUser(response.data.data);
       } catch (err) {
-        console.log(err.response.data);
+        alert(err.response.data.message);
       }
     };
     fetchUserData();
-  });
+  }, [setUser]);
 
-  const transition = useTransition(user, {
-    from: { tranform: "scale(0)", borderRadius: "50%" },
-    enter: { transform: "scale(1)", borderRadius: "0%" },
-    leave: { tranform: "scale(0)", borderRadius: "50%" },
-  });
-
-  return (
-    <div className="App">
-      {transition((style, item) =>
-        item ? <Home style={style} /> : <LoginSignup />
-      )}
-    </div>
-  );
+  return <div className="App">{user ? <Home /> : <LoginSignup />}</div>;
 }
 
 const mapStateToProps = (state) => {

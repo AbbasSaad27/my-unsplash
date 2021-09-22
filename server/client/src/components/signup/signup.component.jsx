@@ -38,14 +38,10 @@ class SignUp extends React.Component {
     }
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://myunsplashmern.herokuapp.com/api/user/signup/",
         data
       );
-
-      console.log(response);
-
-      this.props.setloginForm(true);
 
       this._isMounted &&
         this.setState({
@@ -56,6 +52,8 @@ class SignUp extends React.Component {
           confirm_password: "",
           loader: false,
         });
+
+      this.props.setloginForm(true);
     } catch (err) {
       this.setState({ loader: false });
       console.error(err);

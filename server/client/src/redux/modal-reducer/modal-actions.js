@@ -11,3 +11,10 @@ export const closeModal = () => {
     type: modalTypes.CLOSE_MODAL,
   };
 };
+
+export const setForm = (state) => {
+  return {
+    type: modalTypes.SET_FORM,
+    payload: state,
+  };
+};

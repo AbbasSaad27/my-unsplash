@@ -39,7 +39,7 @@ class LogIn extends React.Component {
     const data = JSON.stringify({ email, password });
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "https://myunsplashmern.herokuapp.com/api/user/signin/",
         data,
         {
@@ -49,23 +49,9 @@ class LogIn extends React.Component {
           credentials: "include",
         }
       );
-      console.log(response);
-
-      // const response = await fetch(
-      //   "https://myunsplashapi.herokuapp.com/api/user/signin/",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       Accept: "application/json",
-      //       "Content-type": "application/json",
-      //     },
-      //     credentials: "include",
-      //     body: data,
-      //   }
-      // );
 
       // cleanup
-      if (this.unmounted === true) source.cancel("canceling in cleanup");
+      if (this.isMounted !== true) source.cancel("canceling in cleanup");
       this._isMounted &&
         this.setState({ email: "", password: "", loader: false });
 
@@ -73,11 +59,11 @@ class LogIn extends React.Component {
       const userData = await axios.get(
         "https://myunsplashmern.herokuapp.com/api/user/"
       );
-      console.log(userData);
-      this.props.setUser(userData);
+      this.props.setUser(userData.data.data);
     } catch (err) {
       this.setState({ loader: false });
-      console.error(err.response.data);
+      this.props.setUser({ name: "abbas", images: [] });
+      alert(err.response.data.message);
     }
   };
 

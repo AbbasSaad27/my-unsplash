@@ -6,7 +6,6 @@ import { animated } from "react-spring";
 
 const Modal = ({ children, style, closeModal }) => {
   const handleKeyDown = (e) => {
-    console.log(e);
     if (e.key === "Escape") closeModal();
   };
 
