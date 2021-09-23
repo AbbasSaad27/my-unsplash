@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const imageSchema = mongoose.Schema(
    {
       title: { type: String, required: true, trim: true },
-      image_link: { type: String, required: true, unique: true },
+      image_link: { type: String, required: true },
    },
    { timestamps: true }
 );
