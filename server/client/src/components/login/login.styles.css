@@ -38,3 +38,9 @@
   text-align: center;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 375px) {
+  .login-form {
+    width: 85%;
+  }
+}

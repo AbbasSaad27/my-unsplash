@@ -7,18 +7,12 @@ import LoginSignup from "./components/login-signup/login-signup.component";
 import { setUser } from "./redux/user-reducer/user-actions";
 
 function App({ user, setUser }) {
-  // const [loggedStatus, setLoggedStatus] = useState(false);
-
   useEffect(() => {
     const fetchUserData = async () => {
-      try {
-        const response = await axios.get(
-          "https://myunsplashmern.herokuapp.com/api/user/"
-        );
-        setUser(response.data.data);
-      } catch (err) {
-        alert(err.response.data.message);
-      }
+      const response = await axios.get(
+        "https://myunsplashmern.herokuapp.com/api/user/"
+      );
+      setUser(response.data.data);
     };
     fetchUserData();
   }, [setUser]);

@@ -34,6 +34,7 @@ class UploadForm extends React.Component {
     try {
       const data = JSON.stringify({ ...this.state });
 
+      this.props.addImage({ ...this.state });
       await axios.post(
         "https://myunsplashmern.herokuapp.com/api/image/",
         data,
@@ -42,8 +43,6 @@ class UploadForm extends React.Component {
           cancelToken: source.token,
         }
       );
-
-      this.props.addImage({ ...this.state });
 
       if (this.isMounted !== true) source.cancel("canceling in cleanup");
       this._isMounted &&

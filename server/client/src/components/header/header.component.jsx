@@ -39,12 +39,14 @@ const Header = ({
   return (
     <header className="header">
       <div className="header-left">
-        <Logo />
-        <div className="app-title">
-          <h3 className="title">My Unsplash</h3>
-          <p className="welcome-message">
-            Welcome, {`${username[0].toUpperCase()}${username.slice(1)}`}
-          </p>
+        <div className="app-details">
+          <Logo />
+          <div className="app-title">
+            <h3 className="title">My Unsplash</h3>
+            <p className="welcome-message">
+              Welcome, {`${username[0].toUpperCase()}${username.slice(1)}`}
+            </p>
+          </div>
         </div>
         <div className="search-container">
           <div className="search-icon-container">

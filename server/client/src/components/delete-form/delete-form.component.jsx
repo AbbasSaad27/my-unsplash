@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import axios from "axios";
+
 import FormInput from "../form-input/form-input.component";
 import FormBtns from "../form-btns/form-btns.component";
 import useHandleChange from "../../custom-hooks/useHandleChange/useHandleChange";
 import "./delete-form.styles.css";
 import { delImage } from "../../redux/user-reducer/user-actions";
-import axios from "axios";
 
 class DeleteForm extends React.Component {
   constructor() {
@@ -22,15 +23,21 @@ class DeleteForm extends React.Component {
   handleSubmit = async (e) => {
     const { delImg, imgToDel } = this.props;
     e.preventDefault();
-    delImg(imgToDel);
+    const data = JSON.stringify({
+      imageId: imgToDel._id,
+      userPassword: this.state.userPassword,
+    });
 
     try {
-      await axios.delete("https://myunsplashmern.herokuapp.com/api/image/", {
-        data: {
-          imageId: imgToDel._id,
-          userPassword: this.state.userPassword,
-        },
-      });
+      await axios.delete(
+        "https://myunsplashmern.herokuapp.com/api/image/",
+        data,
+        {
+          headers: { "Content-type": "application/json" },
+        }
+      );
+
+      delImg(imgToDel);
     } catch (err) {
       alert(err.response.data.message);
     }
