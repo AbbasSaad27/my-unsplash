@@ -29,7 +29,7 @@ class DeleteForm extends React.Component {
     });
 
     try {
-      await axios.delete(
+      await axios.post(
         "https://myunsplashmern.herokuapp.com/api/image/",
         data,
         {
