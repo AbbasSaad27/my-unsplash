@@ -14,6 +14,7 @@ const router = express.Router();
 
 //add image
 router.post('/', checkLogin, upload.none(), addImage);
-router.delete('/', checkLogin, deleteImage);
+//delete image
+router.post('/', checkLogin, deleteImage);
 
 module.exports = router;
