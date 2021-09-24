@@ -5,4 +5,4 @@ signout = DELETE https://myunsplashmern.herokuapp.com/api/user/signout/
 get user data = GET https://myunsplashmern.herokuapp.com/api/user/
 
 add image = POST https://myunsplashmern.herokuapp.com/api/image/
-delete image = DELETE https://myunsplashmern.herokuapp.com/api/image/
+delete image = POST https://myunsplashmern.herokuapp.com/api/image/delete/
