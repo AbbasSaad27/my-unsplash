@@ -30,7 +30,7 @@ class DeleteForm extends React.Component {
 
     try {
       await axios.post(
-        "https://myunsplashmern.herokuapp.com/api/image/",
+        "https://myunsplashmern.herokuapp.com/api/image/delete/",
         data,
         {
           headers: { "Content-type": "application/json" },
